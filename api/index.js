@@ -3,7 +3,7 @@ const app = express()
 
 
 var redis = require("redis"),
-    client = redis.createClient(process.env.REDIS_URL);
+    client = redis.createClient();
 
 const {promisify} = require('util');
 const getAsync = promisify(client.get).bind(client);
