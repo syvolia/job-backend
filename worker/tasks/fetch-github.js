@@ -1,7 +1,13 @@
 var fetch = require('node-fetch');
-var redis = require("redis"),
-    client = redis.createClient();
 
+    const redis = require("redis")
+    let redisClient
+    if (process.env.REDIS_URL) {
+        redisClient = redis.createClient(process.env.REDIS_URL)
+        // Run on server otherwise.
+    } else {
+        redisClient = redis.createClient()
+    }
 const {promisify} = require('util');
 const setAsync = promisify(client.set).bind(client);
 
