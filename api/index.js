@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 
 const redis = require("redis")
-let redisClient
+let client
 if (process.env.REDIS_URL) {
-    redisClient = redis.createClient(process.env.REDIS_URL)
+    client = redis.createClient(process.env.REDIS_URL)
     // Run on server otherwise.
 } else {
     redisClient = redis.createClient()
