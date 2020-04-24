@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+require('dotenv').config()
 const redis = require("redis")
 let client
 if (process.env.REDIS_URL) {

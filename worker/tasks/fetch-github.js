@@ -1,5 +1,5 @@
 var fetch = require('node-fetch');
-
+require('dotenv').config()
 let client
 if (process.env.REDIS_URL) {
     client = redis.createClient(process.env.REDIS_URL)
