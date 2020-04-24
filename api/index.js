@@ -1,16 +1,10 @@
 const express = require('express')
 const app = express()
-require('dotenv').config()
-const redis = require("redis")
-let client
-if (process.env.REDIS_URL) {
-    client = redis.createClient(process.env.REDIS_URL)
-    // Run on server otherwise.
-} else {
-    redisClient = redis.createClient()
-}
 
 
+var redis = require("redis"),
+    client = redis.createClient(process.env.REDIS_URL);
+console.log(client,"tesing index")
 const {promisify} = require('util');
 const getAsync = promisify(client.get).bind(client);
 app.get('/', (req, res, next) => res.json({ message: 'Welcome to jobsearch api' }))
